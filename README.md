@@ -10,8 +10,9 @@
     git clone https://github.com/maxlicheng/luci-app-unblockmusic.git
     #返回上一层目录
     cd ..
-    #在luci->application选中插件
+    #配置
     make menuconfig
+    #在luci->application选中插件
     #编译
     make package/luci-app-unblockmusic/compile V=99
 ```
