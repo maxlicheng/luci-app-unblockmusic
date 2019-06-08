@@ -47,5 +47,5 @@
 - f.打开网易云app，搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成移动端设置。
 
 ## 其他
-更详细的使用方法，可移步个人博客：www.maxlicheng.com
+更详细的使用方法，可移步个人博客：https://www.maxlicheng.com/github/232.html
 
