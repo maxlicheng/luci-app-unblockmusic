@@ -1,6 +1,6 @@
 # 说明
 - 用于解锁网易云灰色歌曲的OpenWRT/LED路由器 Luci 插件
-- 核心功能项目地址：https://github.com/nondanee/UnblockNeteaseMusic.git 
+- 核心功能github地址：https://github.com/nondanee/UnblockNeteaseMusic.git 
 - 自己编写luci插件，使源项目代码更方便的在路由器上运行。
 
 ## 原理
