@@ -53,3 +53,7 @@
 ## 其他
 更详细的使用方法，可移步个人博客：https://www.maxlicheng.com/github/232.html
 
+## 效果图
+  ![Image text](https://raw.githubusercontent.com/maxlicheng/luci-app-unblockmusic/master/views/views1.jpg)
+
+  ![Image text](https://raw.githubusercontent.com/maxlicheng/luci-app-unblockmusic/master/views/views2.jpg)
