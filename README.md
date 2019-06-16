@@ -1,7 +1,8 @@
 # 说明
 - 用于解锁网易云灰色歌曲的OpenWRT/LED路由器 Luci 插件
 - 核心功能github地址：https://github.com/nondanee/UnblockNeteaseMusic.git 
-- 自己编写luci插件，使源项目代码更方便的在路由器上运行。
+- 自己编写luci插件，使源项目代码更方便的在路由器上运行
+- 注：斐讯K3 OP不支持node.js，故无法使用此插件，请知悉。具体见 issues.
 
 ## 原理
 - 其原理是采用  [网易云旧链/QQ/虾米/百度/酷狗/酷我/咕咪/JOOX]等音源 替换网易云变灰歌曲链接，
