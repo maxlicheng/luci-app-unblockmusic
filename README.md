@@ -25,14 +25,14 @@
 ```
 
 ## Releases中现有ipk
-- n1-op-luci-app-unblockmusic-ipk.zip 4.6 MB
-- newifi-d2-luci-app-unblockmusic_ipk.zip 4.32 MB
-- wndr4300-luci-app-unblockmusic-ipk.zip 4.38 MB
-- x86-64-luci-app-unblockmusic_ipk.zip 5.07 MB
-- 适用于openwrt/lede系统的ipk插件，并已通过测试，安装即可使用，先安装node.ipk，再安装luci-app-unblockmusic.ipk。详见：https://github.com/maxlicheng/luci-app-unblockmusic/releases
-- 现有ipk基于4.14.121版本的openwrt源码编译而成，注意内核版本要与插件版本一致，否则无法正常使用。需要找到相同版本的openwrt源码，自行编译插件。
-- 内核版本查看方式
+- n1-op-luci-app-unblockmusic-ipk.zip       4.6 MB
+- newifi-d2-luci-app-unblockmusic_ipk.zip       4.32 MB
+- wndr4300-luci-app-unblockmusic-ipk.zip       4.38 MB
+- x86-64-luci-app-unblockmusic_ipk.zip       5.07 MB
+- 以上是适用于openwrt/lede系统的ipk插件，并已通过测试，安装即可使用，先安装node.ipk，再安装luci-app-unblockmusic.ipk。详见：https://github.com/maxlicheng/luci-app-unblockmusic/releases
+- 现有ipk基于4.14.121内核版本的openwrt源码编译而成，注意内核版本要与插件编译时源码内核版本一致，否则无法正常使用。若无法正常使用，则需要找到相同版本的openwrt源码，自行编译插件。
 ```Brash
+    #内核版本查看方式
     cat /proc/version
 ```
 
