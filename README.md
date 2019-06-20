@@ -6,7 +6,7 @@
 
 ## 原理
 - 其原理是采用  [网易云旧链/QQ/虾米/百度/酷狗/酷我/咕咪/JOOX]等音源 替换网易云变灰歌曲链接，
-- 简单点理解 就是通过 脚本，将主流客户端的音乐链接 汇集到一个客户端上。
+- 通俗地理解就是通过脚本，将主流客户端的音乐链接汇集到一个客户端上。
 
 ## 编译
 - 插件依赖node.js，OpenWRT/LEDE源码默认是v8.10.0版本，编译过程中下载会比较慢，可以提前将node-v8.10.0下载好上传到dl目录。
@@ -25,10 +25,10 @@
 ```
 
 ## Releases中现有ipk
-- n1-op-luci-app-unblockmusic-ipk.zip       4.6 MB
-- newifi-d2-luci-app-unblockmusic_ipk.zip       4.32 MB
-- wndr4300-luci-app-unblockmusic-ipk.zip       4.38 MB
-- x86-64-luci-app-unblockmusic_ipk.zip       5.07 MB
+- 斐讯N1：n1-op-luci-app-unblockmusic-ipk.zip       4.6 MB
+- 新三D2：newifi-d2-luci-app-unblockmusic_ipk.zip       4.32 MB
+- 网件4300：wndr4300-luci-app-unblockmusic-ipk.zip       4.38 MB
+- 软路由x86-64：x86-64-luci-app-unblockmusic_ipk.zip       5.07 MB
 - 以上是适用于openwrt/lede系统的ipk插件，并已通过测试，安装即可使用，先安装node.ipk，再安装luci-app-unblockmusic.ipk。详见：https://github.com/maxlicheng/luci-app-unblockmusic/releases
 - 现有ipk基于4.14.121内核版本的openwrt源码编译而成，注意内核版本要与插件编译时源码内核版本一致，否则无法正常使用。若无法正常使用，则需要找到与你当前系统内核版本相同的openwrt源码，自行编译插件。
 ```Brash
