@@ -24,17 +24,20 @@
     make package/luci-app-unblockmusic/compile V=99
 ```
 
-## releases中现有ipk
+## Releases中现有ipk
 - n1-op-luci-app-unblockmusic-ipk.zip 4.6 MB
 - newifi-d2-luci-app-unblockmusic_ipk.zip 4.32 MB
 - wndr4300-luci-app-unblockmusic-ipk.zip 4.38 MB
 - x86-64-luci-app-unblockmusic_ipk.zip 5.07 MB
-- 适用于openwrt/lede系统的ipk插件，并已通过测试，安装即可使用，注意内核版本要与插件版本一致，否则无法正常使用。
-先安装node.ipk，再安装luci-app-unblockmusic.ipk。详见：https://github.com/maxlicheng/luci-app-unblockmusic/releases
+- 适用于openwrt/lede系统的ipk插件，并已通过测试，安装即可使用，先安装node.ipk，再安装luci-app-unblockmusic.ipk。详见：https://github.com/maxlicheng/luci-app-unblockmusic/releases
+- 现有ipk基于4.14.121版本的openwrt源码编译而成，注意内核版本要与插件版本一致，否则无法正常使用。需要找到相同版本的openwrt源码，自行编译插件。
+- 内核版本查看方式
+```Brash
+    cat /proc/version
+```
 
 ## 使用方法
 ### 1.路由器web界面插件配置
-
 - a.在路由器web界面服务选项中找到“解锁网易云灰色歌曲”；
 - b.勾选启用解锁；
 - c.音源选择默认即可，其他音源暂时不起作用；
@@ -42,7 +45,6 @@
 - e.点击“保存&应用”
 
 ### 2.PC端
-
 - a.打开网易云客户端；
 - b.进入设置，找到工具；
 - c.选择 自定义代理；
@@ -51,7 +53,6 @@
 - f.搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成PC端设置。
 
 ### 3.移动端
-
 - a.网络设置，找到连入的wifi；
 - b.进入参数设置，找到HTTP PROXY;
 - c.进入并选择静态IP；
