@@ -8,11 +8,9 @@
 - 其原理是采用  [网易云旧链/QQ/虾米/百度/酷狗/酷我/咕咪/JOOX]等音源 替换网易云变灰歌曲链接，
 - 简单点理解 就是通过 脚本，将主流客户端的音乐链接 汇集到一个客户端上。
 
-## 使用方法
+## 编译
 - 插件依赖node.js，OpenWRT/LEDE源码默认是v8.10.0版本，编译过程中下载会比较慢，可以提前将node-v8.10.0下载好上传到dl目录。
 - 下载链接(17.5M)：http://nodejs.org/dist/v8.10.0/node-v8.10.0.tar.xz  
-
-### 1.编译插件
 ```Brash
     #进入OpenWRT/LEDE源码package目录
     cd package
@@ -25,7 +23,17 @@
     #在luci->application选中插件,编译
     make package/luci-app-unblockmusic/compile V=99
 ```
-### 2.路由器web界面插件配置
+
+## releases中现有ipk
+- n1-op-luci-app-unblockmusic-ipk.zip 4.6 MB
+- newifi-d2-luci-app-unblockmusic_ipk.zip 4.32 MB
+- wndr4300-luci-app-unblockmusic-ipk.zip 4.38 MB
+- x86-64-luci-app-unblockmusic_ipk.zip 5.07 MB
+- 适用于openwrt/lede系统的ipk插件，并已通过测试，安装即可使用，注意内核版本要与插件版本一致，否则无法正常使用。
+先安装node.ipk，再安装luci-app-unblockmusic.ipk。详见：https://github.com/maxlicheng/luci-app-unblockmusic/releases
+
+## 使用方法
+### 1.路由器web界面插件配置
 
 - a.在路由器web界面服务选项中找到“解锁网易云灰色歌曲”；
 - b.勾选启用解锁；
@@ -33,7 +41,7 @@
 - d.设置你想要的端口号，默认5200；
 - e.点击“保存&应用”
 
-### 3.PC端
+### 2.PC端
 
 - a.打开网易云客户端；
 - b.进入设置，找到工具；
@@ -42,7 +50,7 @@
 - e.保存并重启；
 - f.搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成PC端设置。
 
-### 4.移动端
+### 3.移动端
 
 - a.网络设置，找到连入的wifi；
 - b.进入参数设置，找到HTTP PROXY;
