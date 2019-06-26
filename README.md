@@ -51,14 +51,17 @@
 - d.服务器填入路由器ip，端口为你设定的端口号，默认5200。
 - e.保存并重启；
 - f.搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成PC端设置。
+ ![Image text](http://www.maxlicheng.com/wp-content/uploads/2019/06/luci-1.jpg)
 
 ### 3.移动端
 - a.网络设置，找到连入的wifi；
-- b.进入参数设置，找到HTTP PROXY;
-- c.进入并选择静态IP；
-- d.服务器填入路由器ip，端口为你设定的端口号，默认5200。
-- e.保存；
-- f.打开网易云app，搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成移动端设置。
+- b.进入参数设置，找到HTTP PROXY；
+- c.进入Configure Proxy，选择Automatic；
+- d.在URL中填入http://192.168.10.1:5200:proxy.pac
+- e.其中192.168.10.1为路由器IP，端口为你设定的端口号，默认5200；
+- f.保存；
+- g.打开网易云app，搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成移动端设置。
+ ![Image text](http://www.maxlicheng.com/wp-content/uploads/2019/06/Luci-3.jpg)
 
 ## 效果图
 ### luci界面
