@@ -1,3 +1,16 @@
+### 20190718更新说明
+- 同步UnblockNeteaseMusic v0.16.0版本
+#### 更新内容：
+- 增加咪咕高音质音源 
+- 增加 zlib 异常捕获 
+- 补全搜索关键词 ，排列改回 歌名 - 歌手 
+- 不再强制使用 package，默认情况音源不用通过服务器转发 
+- 修复使用上游代理时泄露请求 body 的安全问题
+- 修复 hosts 模式被代理认证限制的 
+- 补全并完善 error handler，反正意外崩溃
+- 具体可移步：https://github.com/nondanee/UnblockNeteaseMusic/releases
+- 当前插件版本号：v1.37
+
 # 说明
 - 使用源码前，先检测自己的路由器主控芯片型号是否支持FPU,不支持FPU的是无法运行node.js的，插件依赖于node.js。
 - 用于解锁网易云灰色歌曲的OpenWRT/LED路由器 Luci 插件
