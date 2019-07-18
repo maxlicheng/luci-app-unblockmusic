@@ -14,7 +14,7 @@ LUCI_DEPENDS:=+node
 LUCI_PKGARCH:=all
 PKG_NAME:=luci-app-unblockmusic
 PKG_VERSION:=1
-PKG_RELEASE:=36
+PKG_RELEASE:=37
 
 PKG_MAINTAINER:=<https://github.com/maxlicheng/luci-app-unblockmusic>
 
