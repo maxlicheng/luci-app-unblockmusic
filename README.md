@@ -19,7 +19,7 @@
 - 使用源码前，先检测自己的路由器主控芯片型号是否支持FPU,不支持FPU的是无法运行node.js的，插件依赖于node.js。
 - 用于解锁网易云灰色歌曲的OpenWRT/LED路由器 Luci 插件
 - 核心功能github地址：https://github.com/nondanee/UnblockNeteaseMusic.git 
-- 自己编写luci插件，使源项目代码更方便的在路由器上运行
+- 编写配套的luci插件，使源项目代码更方便的在路由器上运行
 - 注：已知斐讯K3 OP不支持node.js，故无法使用此插件，请知悉。具体见 issues.
 
 ## 原理
