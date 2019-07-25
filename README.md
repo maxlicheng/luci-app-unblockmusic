@@ -61,6 +61,7 @@
 - c.音源选择默认即可，其他音源暂时不起作用；
 - d.设置你想要的端口号，默认5200；
 - e.点击“保存&应用”
+- f.说明，日志功能保留，后续完善
 
 ### 2.PC端
 - a.打开网易云客户端；
@@ -88,4 +89,6 @@
   ![Image text](https://raw.githubusercontent.com/maxlicheng/luci-app-unblockmusic/master/views/views2.jpg)
   
 ## 其他
-更详细的使用方法，可移步个人博客：https://www.maxlicheng.com/github/232.html
+- 更详细的使用方法，可移步个人博客：
+- [《路由器解锁网易云灰色歌曲》](https://www.maxlicheng.com/github/232.html)
+- [《win10系统解锁网易云音乐灰色歌曲》](https://www.maxlicheng.com/github/197.html)
