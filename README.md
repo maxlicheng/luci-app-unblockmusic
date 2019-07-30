@@ -60,8 +60,8 @@ opkg install luci-app-unblockmusic_2.1.0-1_all.ipk
 ### Windows客户端
 ![Image text](https://www.maxlicheng.com/wp-content/uploads/2019/07/views2.jpg)
 
-## 若开启“自动代理”后，无法正常解锁歌曲，请按以下方法设置
-### 注：因设备存在差异性，不一定所有设备都能正常生效，供参考
+## 补充
+### 注：若开启“自动代理”后，无法正常解锁歌曲，请按以下方法设置，因设备存在差异性，不一定所有设备都能正常生效，供参考
 ### Windows客户端
 - 说明：经多次测试，一般开启“自动代理”后，Windows网易客户端都可以正常解锁，无需设置代理；若确实无法解锁，请尝试以下步骤进行设置
 - 1.打开网易云客户端
@@ -87,19 +87,19 @@ opkg install luci-app-unblockmusic_2.1.0-1_all.ipk
 - 具体安装教程请移步[《IOS网易云音乐低版本客户端安装教程》](https://www.maxlicheng.com/github/590.html)
 
 ## 关于issues
+- 解锁效果及设备代理方面的问题，可先到核心功能项目中查看是否可以找到相关解决方案[ [ nondanee/UnblockNeteaseMusic-issues ] ](https://github.com/nondanee/UnblockNeteaseMusic/issues)
+- 若实在没有相关的解决方案，欢迎开issues一同探讨
 - 尽量在本项目的issues提源码编译和安装方面的问题，并附上你的路由器设备型号，最好以make menuconfig的截图或者文字贴到issues中，如
 ```
 Target System (MediaTek Ralink MIPS) --->
 Subtarget (MT7621 based boards) --->
 Target Profile (Newifi D2) --->
 ```
-- 解锁效果及设备代理方面的问题，可先到核心功能项目中查看是否可以找到相关解决方案[ [ nondanee/UnblockNeteaseMusic-issues ] ](https://github.com/nondanee/UnblockNeteaseMusic/issues)
-- 若实在没有相关的解决方案，欢迎开issues一同探讨
 
 ## 鸣谢
 - 感谢 [[nondanee]](https://github.com/nondanee) 开发的解锁网易云灰色歌曲核心项目
 - 感谢 [[1715173329]](https://github.com/1715173329) 对本项目的[二次优化](https://github.com/project-openwrt/luci-app-unblockmusic)
-- 本插件已被L大收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，感谢L大对本项目的认可
+- 本插件已被 [[Lean]](https://github.com/coolsnowwolf) 收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，感谢Lean的收录
 
 ## 其他 
 - 更多设备的使用方法(MacOS等)，可移步个人博客：
