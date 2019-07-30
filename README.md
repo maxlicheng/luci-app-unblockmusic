@@ -1,94 +1,112 @@
-## 注意
-- 目前正常使用的网易云客户端，尽量少更新或者不更新，可在设置->关于网易云音乐中禁止客户端自动更新。
-- 正常使用的插件，同样建议不要轻易更新，若要更新请保留旧版本安装包后再进行更新体验。
-- 若无法正常使用插件，可尝试windows端运行解锁项目，效果更好，具体移步：https://www.maxlicheng.com/github/197.html
-### 20190718更新说明
-- 同步UnblockNeteaseMusic v0.16.0版本
-#### 更新内容：
-- 增加咪咕高音质音源 
-- 增加 zlib 异常捕获 
-- 补全搜索关键词 ，排列改回 歌名 - 歌手 
-- 不再强制使用 package，默认情况音源不用通过服务器转发 
-- 修复使用上游代理时泄露请求 body 的安全问题
-- 修复 hosts 模式被代理认证限制的 
-- 补全并完善 error handler，反正意外崩溃
-- 具体可移步：https://github.com/nondanee/UnblockNeteaseMusic/releases
-- 当前插件版本号：v1.37
+## v2.1.0更新说明
+### 功能更新
+- 支持音源选择，默认启用QQ、虾米、百度、酷狗四个音源
+- 支持路由器ipset自动分流功能，可选，默认开启，开启后，大部分设备无需设置代理，苹果系列设备除外
+- 支持日志显示
 
-# 说明
-- 使用源码前，先检测自己的路由器主控芯片型号是否支持FPU,不支持FPU的是无法运行node.js的，插件依赖于node.js。
-- 用于解锁网易云灰色歌曲的OpenWRT/LED路由器 Luci 插件
-- 核心功能github地址：https://github.com/nondanee/UnblockNeteaseMusic.git 
+### 源码架构更新
+- 同步[UnblockNeteaseMusic-0.17.0](https://github.com/nondanee/UnblockNeteaseMusic/releases)源码
+- 为方便更新 UnblockNeteaseMusic 源码，将 [luci插件] 和 [UnblockNeteaseMusic核心代码] 分离，编译后为两个单独的ipk
+
+## 说明
+- 用于解锁网易云灰色歌曲的OpenWRT/LEDE路由器 Luci 插件
+- 核心功能：[nondanee/UnblockNeteaseMusic](https://github.com/nondanee/UnblockNeteaseMusic.git) 
 - 编写配套的luci插件，使源项目代码更方便的在路由器上运行
-- 注：已知斐讯K3 OP不支持node.js，故无法使用此插件，请知悉。具体见 issues.
+- 注：插件依赖于node.js，路由器主控芯片不支持FPU的设备不能正常运行node.js，已知斐讯K3不支持node.js
 
 ## 原理
-- 其原理是采用  [网易云旧链/QQ/虾米/百度/酷狗/酷我/咕咪/JOOX]等音源 替换网易云变灰歌曲链接，
-- 通俗地理解就是通过脚本，将主流客户端的音乐链接汇集到一个客户端上。
+- 其原理是采用 [QQ/虾米/百度/酷狗/酷我/咕咪/JOOX]等音源 替换网易云变灰歌曲链接
+- 通俗地理解就是通过脚本，将主流客户端的音乐链接汇集到一个客户端上
+- 注：[UnblockNeteaseMusic-0.17.0](https://github.com/nondanee/UnblockNeteaseMusic/releases)版本已不支持网易云旧链
 
 ## 编译
-- 插件依赖node.js，OpenWRT/LEDE源码默认是v8.10.0版本，编译过程中下载会比较慢，可以提前将node-v8.10.0下载好上传到dl目录。
-- 下载链接(17.5M)：http://nodejs.org/dist/v8.10.0/node-v8.10.0.tar.xz  
-```Brash
-    #进入OpenWRT/LEDE源码package目录
-    cd package
-    #克隆插件源码
-    git clone https://github.com/maxlicheng/luci-app-unblockmusic.git
-    #返回上一层目录
-    cd ..
-    #配置
-    make menuconfig
-    #在luci->application选中插件,编译
-    make package/luci-app-unblockmusic/compile V=99
+```
+#进入OpenWRT/LEDE源码package目录
+cd package
+#克隆插件源码
+git clone https://github.com/maxlicheng/luci-app-unblockmusic.git
+#返回上一层目录
+cd ..
+#配置
+make menuconfig
+#在luci->application选中插件,编译
+#单独编译路径较上一版本有变动，需要指定到app文件夹
+make package/luci-app-unblockmusic/app/compile V=99
 ```
 
-## Releases中现有ipk
-- 斐讯N1：n1-op-luci-app-unblockmusic-ipk.zip       4.6 MB
-- 新三D2：newifi-d2-luci-app-unblockmusic_ipk.zip       4.32 MB
-- 网件4300：wndr4300-luci-app-unblockmusic-ipk.zip       4.38 MB
-- 软路由x86-64：x86-64-luci-app-unblockmusic_ipk.zip       5.07 MB
-- 以上是适用于openwrt/lede系统的ipk插件，并已通过测试，安装即可使用，先安装node.ipk，再安装luci-app-unblockmusic.ipk。详见：https://github.com/maxlicheng/luci-app-unblockmusic/releases
-- 现有ipk基于L大openwrt源码编译而成，注意内核版本要与插件编译时源码内核版本一致，否则无法正常使用。若无法正常使用，则需要找到与你当前系统内核版本相同的openwrt源码，自行编译插件。
-```Brash
-    #内核版本查看方式
-    cat /proc/version
+## 安装
+- 假定路由器是x86_64架构
+- 编译生成的ipk路径：bin/packages/x86_64/base/
+- 将路径下的 UnblockNeteaseMusic_0.17.0-5_x86_64.ipk 和 luci-app-unblockmusic_2.1.0-1_all.ipk 用文件传输软件拷贝到路由器
+- 若第一次安装还需将 node_v8.10.0-3_x86_64.ipk 拷贝到路由器
+- 完成后依次执行以下安装命令，注意安装顺序
+```
+opkg install node_v8.10.0-3_x86_64.ipk
+opkg install UnblockNeteaseMusic_0.17.0-5_x86_64.ipk 
+opkg install luci-app-unblockmusic_2.1.0-1_all.ipk
 ```
 
 ## 使用方法
-### 1.路由器web界面插件配置
-- a.在路由器web界面服务选项中找到“解锁网易云灰色歌曲”；
-- b.勾选启用解锁；
-- c.音源选择默认即可，其他音源暂时不起作用；
-- d.设置你想要的端口号，默认5200；
-- e.点击“保存&应用”
-- f.说明，日志功能保留，后续完善
-
-### 2.PC端
-- a.打开网易云客户端；
-- b.进入设置，找到工具；
-- c.选择 自定义代理；
-- d.服务器填入路由器ip，端口为你设定的端口号，默认5200。
-- e.保存并重启；
-- f.搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成PC端设置。
- ![Image text](http://www.maxlicheng.com/wp-content/uploads/2019/06/luci-1.jpg)
-
-### 3.移动端
-- a.网络设置，找到连入的wifi；
-- b.进入参数设置，找到HTTP PROXY；
-- c.进入Configure Proxy，选择Automatic；
-- d.在URL中填入http://192.168.10.1:5200/proxy.pac
-- e.其中192.168.10.1为路由器IP，端口为你设定的端口号，默认5200；
-- f.保存；
-- g.打开网易云app，搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成移动端设置。
- ![Image text](http://www.maxlicheng.com/wp-content/uploads/2019/06/Luci-3.jpg)
+- 1.在路由器web界面“服务”选项中找到“解锁网易云灰色歌曲”
+- 2.勾选“启用解锁”
+- 3.音源缺省“默认”，支持指定音源
+- 4.设置你想要的端口号，默认”5200“
+- 5.默认启用”自动代理“，开启后，大部分设备无需设置代理，苹果系列设备除外
+- 6.点击“保存&应用”
 
 ## 效果图
 ### luci界面
-  ![Image text](https://raw.githubusercontent.com/maxlicheng/luci-app-unblockmusic/master/views/views1.jpg)
-### PC网易云客户端
-  ![Image text](https://raw.githubusercontent.com/maxlicheng/luci-app-unblockmusic/master/views/views2.jpg)
-  
-## 其他
-- 更详细的使用方法，可移步个人博客：
+![Image text](https://www.maxlicheng.com/wp-content/uploads/2019/07/views1.jpg)
+### Windows客户端
+![Image text](https://www.maxlicheng.com/wp-content/uploads/2019/07/views2.jpg)
+
+## 若开启“自动代理”后，无法正常解锁歌曲，请按以下方法设置
+### 注：因设备存在差异性，不一定所有设备都能正常生效，供参考
+### Windows客户端
+- 说明：经多次测试，一般开启“自动代理”后，Windows网易客户端都可以正常解锁，无需设置代理；若确实无法解锁，请尝试以下步骤进行设置
+- 1.打开网易云客户端
+- 2.进入设置，找到工具
+- 3.选择 自定义代理
+- 4.服务器填入路由器ip，端口为你设定的端口号，默认5200
+- 5.保存并重启
+- 6.搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成PC端设置
+![Image text](http://www.maxlicheng.com/wp-content/uploads/2019/06/luci-1.jpg)
+ 
+### IOS客户端
+#### 设置方法
+- 1.网络设置，找到连入的wifi
+- 2.进入参数设置，找到HTTP PROXY
+- 3.进入Configure Proxy，选择Automatic
+- 4.在URL中填入自动代理脚本链接：http://192.168.10.1:5200/proxy.pac
+- 5.其中192.168.10.1为路由器IP，端口为你设定的端口号，默认5200
+- 6.保存
+- 7.打开网易云app，搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成IOS端设置
+![Image text](http://www.maxlicheng.com/wp-content/uploads/2019/06/Luci-3.jpg)
+#### 安装低版本客户端
+- 说明：若自动代理不稳定或者无效果，请用爱思助手安装本人提供的低版本网易云客户端安装包
+- 具体安装教程请移步[《IOS网易云音乐低版本客户端安装教程》](https://www.maxlicheng.com/github/590.html)
+
+## 关于issues
+- 尽量在本项目的issues提源码编译和安装方面的问题，并附上你的路由器设备型号，最好以make menuconfig的截图或者文字贴到issues中，如
+```
+Target System (MediaTek Ralink MIPS) --->
+Subtarget (MT7621 based boards) --->
+Target Profile (Newifi D2) --->
+```
+- 解锁效果及设备代理方面的问题，可先到核心功能项目中查看是否可以找到相关解决方案[ [ nondanee/UnblockNeteaseMusic-issues ] ](https://github.com/nondanee/UnblockNeteaseMusic/issues)
+- 若实在没有相关的解决方案，欢迎开issues一同探讨
+
+## 鸣谢
+- 感谢 [[nondanee]](https://github.com/nondanee) 开发的解锁网易云灰色歌曲核心项目
+- 感谢 [[1715173329]](https://github.com/1715173329) 对本项目的[二次优化](https://github.com/project-openwrt/luci-app-unblockmusic)
+- 本插件已被L大收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，感谢L大对本项目的认可
+
+## 其他 
+- 更多设备的使用方法(MacOS等)，可移步个人博客：
 - [《路由器解锁网易云灰色歌曲》](https://www.maxlicheng.com/github/232.html)
-- [《win10系统解锁网易云音乐灰色歌曲》](https://www.maxlicheng.com/github/197.html)
+- [《Win10系统解锁网易云音乐灰色歌曲》](https://www.maxlicheng.com/github/197.html)
+- [《IOS网易云音乐低版本客户端安装教程》](https://www.maxlicheng.com/github/590.html)
+- [《【视频】低版本IOS网易云音乐客户端听周杰伦歌曲效果》](https://www.bilibili.com/video/av61511828/)
+
+
+

@@ -1,0 +1,37 @@
+
+mp = Map("unblockmusic", translate("解锁网易云灰色歌曲"))
+mp.description = translate("原理：采用 [QQ/虾米/百度/酷狗/酷我/咕咪/JOOX]等音源 替换网易云变灰歌曲链接<br />具体使用方法可查看github：<br />https://github.com/maxlicheng/luci-app-unblockmusic")
+
+mp:section(SimpleSection).template  = "unblockmusic/unblockmusic_status"
+
+s = mp:section(TypedSection, "unblockmusic")
+s.anonymous=true
+s.addremove=false
+
+enabled = s:option(Flag, "enabled", translate("启用解锁"))
+enabled.default = 0
+enabled.rmempty = false
+
+speedtype = s:option(ListValue, "musicapptype", translate("音源选择"))
+speedtype:value("default", translate("默认"))
+speedtype:value("netease", translate("网易云音乐"))
+speedtype:value("qq", translate("QQ音乐"))
+speedtype:value("xiami", translate("虾米音乐"))
+speedtype:value("baidu", translate("百度音乐"))
+speedtype:value("kugou", translate("酷狗音乐"))
+speedtype:value("kuwo", translate("酷我音乐"))
+speedtype:value("migu", translate("咕咪音乐"))
+speedtype:value("joox", translate("JOOX音乐"))
+
+account = s:option(Value, "port", translate("端口号"))
+account.datatype = "string"
+
+enabled = s:option(Flag, "enable_ipset", translate("启用自动代理"))
+enabled.description = translate("启用后，路由器ipset自动分流，大部分设备无需设置代理，苹果系列设备除外")
+enabled.default = 1
+enabled.rmempty = false
+
+enabled=s:option(DummyValue,"opennewwindow" , 
+	translate("<input type=\"button\" class=\"cbi-button cbi-button-apply\" value=\"使用教程\" onclick=\"window.open('https://github.com/maxlicheng/luci-app-unblockmusic')\" />"))
+
+return mp
