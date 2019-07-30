@@ -1,6 +1,0 @@
-
-config unblockmusic
-	option musicapptype 'default'
-	option port '5200'
-	option enabled '0'
-
