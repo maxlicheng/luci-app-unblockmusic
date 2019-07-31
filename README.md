@@ -9,7 +9,8 @@
 - 为方便更新 UnblockNeteaseMusic 源码，将 [luci插件] 和 [UnblockNeteaseMusic核心代码] 分离，编译后为两个单独的ipk
 
 ## 说明
-- 用于解锁网易云灰色歌曲的OpenWRT/LEDE路由器 Luci 插件
+- luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LED路由器插件
+- 安装插件后可 免费 下载/播放 网易云付费歌曲 及 无版权音乐
 - 核心功能：[nondanee/UnblockNeteaseMusic](https://github.com/nondanee/UnblockNeteaseMusic.git) 
 - 编写配套的luci插件，使源项目代码更方便的在路由器上运行
 - 注：插件依赖于node.js，路由器主控芯片不支持FPU的设备不能正常运行node.js，已知斐讯K3不支持node.js
@@ -61,7 +62,8 @@ opkg install luci-app-unblockmusic_2.1.0-1_all.ipk
 ![Image text](https://www.maxlicheng.com/wp-content/uploads/2019/07/views2.jpg)
 
 ## 补充
-### 注：若开启“自动代理”后，无法正常解锁歌曲，请按以下方法设置，因设备存在差异性，不一定所有设备都能正常生效，供参考
+### 注1：插件运行后即可正常 下载/播放 付费歌曲及无版权音乐，若无法 下载/播放 可指定其它客户端音源进行尝试
+### 注2：若开启“自动代理”后，无法正常解锁歌曲，请按以下方法设置，因设备存在差异性，不一定所有设备都能正常生效，供参考
 ### Windows客户端
 - 说明：经多次测试，一般开启“自动代理”后，Windows网易客户端都可以正常解锁，无需设置代理；若确实无法解锁，请尝试以下步骤进行设置
 - 1.打开网易云客户端
@@ -99,7 +101,7 @@ Target Profile (Newifi D2) --->
 ## 鸣谢
 - 感谢 [[nondanee]](https://github.com/nondanee) 开发的解锁网易云灰色歌曲核心项目
 - 感谢 [[1715173329]](https://github.com/1715173329) 对本项目的[二次优化](https://github.com/project-openwrt/luci-app-unblockmusic)
-- 本插件已被 [[Lean]](https://github.com/coolsnowwolf) 收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，感谢Lean的收录
+- 本插件已被 [[Lean]](https://github.com/coolsnowwolf) 收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，感谢 [[Lean]](https://github.com/coolsnowwolf) 的收录
 
 ## 其他 
 - 更多设备的使用方法(MacOS等)，可移步个人博客：
