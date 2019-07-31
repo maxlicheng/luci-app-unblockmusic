@@ -5,8 +5,7 @@
 - 支持日志显示
 
 ### 源码架构更新
-- 同步[UnblockNeteaseMusic-0.17.0](https://github.com/nondanee/UnblockNeteaseMusic/releases)源码
-- 为方便更新 UnblockNeteaseMusic 源码，将 [luci插件] 和 [UnblockNeteaseMusic核心代码] 分离，编译后为两个单独的ipk
+- 同步[UnblockNeteaseMusic-0.17.0](https://github.com/nondanee/UnblockNeteaseMusic/releases)源码， [luci插件] 和 [UnblockNeteaseMusic核心代码] 分离，编译后为两个单独的ipk
 
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LED路由器插件
