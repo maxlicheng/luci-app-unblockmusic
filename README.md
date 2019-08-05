@@ -105,6 +105,7 @@ Target Profile (Newifi D2) --->
 - 更多设备的使用方法(MacOS等)，可移步个人博客：
 - [《路由器解锁网易云灰色歌曲》](https://www.maxlicheng.com/github/232.html)
 - [《Win10系统解锁网易云音乐灰色歌曲》](https://www.maxlicheng.com/github/197.html)
+- [《IOS旧版本App下载教程》](https://www.maxlicheng.com/github/605.html)
 - [《IOS网易云音乐低版本客户端安装教程》](https://www.maxlicheng.com/github/590.html)
 - [《【视频】低版本IOS网易云音乐客户端听周杰伦歌曲效果》](https://www.bilibili.com/video/av61511828/)
 
