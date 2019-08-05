@@ -1,6 +1,6 @@
 ## v2.1.0更新说明
 ### 功能更新
-- 支持音源选择，默认启用QQ、虾米、百度、酷狗四个音源
+- 支持音源选择，默认启用"酷狗"音源
 - 支持路由器ipset自动分流功能，可选，默认开启，开启后，大部分设备无需设置代理，苹果系列设备除外
 - 支持日志显示
 
@@ -100,7 +100,6 @@ Target Profile (Newifi D2) --->
 ## 鸣谢
 - 感谢 [[nondanee]](https://github.com/nondanee) 开发的解锁网易云灰色歌曲核心项目
 - 感谢 [[1715173329]](https://github.com/1715173329) 对本项目的[二次优化](https://github.com/project-openwrt/luci-app-unblockmusic)
-- 本插件已被 [[Lean]](https://github.com/coolsnowwolf) 收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，感谢 [[Lean]](https://github.com/coolsnowwolf) 的收录
 
 ## 其他 
 - 更多设备的使用方法(MacOS等)，可移步个人博客：
