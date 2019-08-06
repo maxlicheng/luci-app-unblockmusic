@@ -40,12 +40,12 @@ make package/luci-app-unblockmusic/app/compile V=99
 ## 安装
 - 假定路由器是x86_64架构
 - 编译生成的ipk路径：bin/packages/x86_64/base/
-- 将路径下的 UnblockNeteaseMusic_0.18.0-1_x86_64.ipk 和 luci-app-unblockmusic_2.2.0-1_all.ipk 用文件传输软件拷贝到路由器
+- 将路径下的 UnblockNeteaseMusic_0.18.0-3_x86_64.ipk 和 luci-app-unblockmusic_2.2.0-1_all.ipk 用文件传输软件拷贝到路由器
 - 若第一次安装还需将 node_v8.10.0-3_x86_64.ipk 拷贝到路由器
 - 完成后依次执行以下安装命令，注意安装顺序
 ```
 opkg install node_v8.10.0-3_x86_64.ipk
-opkg install UnblockNeteaseMusic_0.18.0-1_x86_64.ipk 
+opkg install UnblockNeteaseMusic_0.18.0-3_x86_64.ipk 
 opkg install luci-app-unblockmusic_2.2.0-1_all.ipk
 ```
 
