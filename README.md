@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ## v2.2.0更新说明
 ### 源码更新
 - 合并 [[Lean]](https://github.com/coolsnowwolf) 对本插件二次优化后的源码
 - 同步 [UnblockNeteaseMusic-0.18.0](https://github.com/nondanee/UnblockNeteaseMusic/releases/tag/v0.18.0) 源码
+=======
+## v2.2.0更新说明
+### 源码更新
+- 合并 [[Lean]](https://github.com/coolsnowwolf) 对本插件二次优化后的源码
+- 同步 [UnblockNeteaseMusic-0.18.0](https://github.com/nondanee/UnblockNeteaseMusic/releases/tag/v0.18.0) 源码
+>>>>>>> 012407f3f652904cfae72f478f127aa5e314586e
 
 ### 功能更新
 - 缺省默认"酷我音乐"高品质音源
