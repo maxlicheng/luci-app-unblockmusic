@@ -46,7 +46,7 @@ make package/luci-app-unblockmusic/app/compile V=99
 ```
 opkg install node_v8.10.0-3_x86_64.ipk
 opkg install UnblockNeteaseMusic_0.18.0-3_x86_64.ipk 
-opkg install luci-app-unblockmusic_2.2.0-1_all.ipk
+opkg install luci-app-unblockmusic_v2.2.0-1_all.ipk
 ```
 
 ## 使用方法
