@@ -11,8 +11,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=UnblockNeteaseMusic
-PKG_VERSION:=0.18.0
-PKG_RELEASE:=3
+PKG_VERSION:=0.18.1
+PKG_RELEASE:=1
 
 PKG_LICENSE:=MIT
 
