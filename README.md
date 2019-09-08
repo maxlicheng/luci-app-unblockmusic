@@ -1,7 +1,15 @@
+## 前言
+- 鉴于很多小伙伴反馈自动代理不成功，这里统一说明一下，截止至2019年9月8日，作者使用的网易云都是可以自动代理的。
+- 以下是作者使用的各个系统的网易云音乐客户端版本，供大家参考。
+- win10：v2.5.3（Build:197601）
+- ios：v5.8.0
+- android：v4.3.1.567509
+- 以上就是作者使用的客户端版本，自动代理功能均正常。
+
 ## v2.2.0更新说明
 ### 源码更新
 - 合并 [[Lean]](https://github.com/coolsnowwolf) 对本插件二次优化后的源码
-- 同步 [UnblockNeteaseMusic-0.18.1](https://github.com/nondanee/UnblockNeteaseMusic/releases/tag/v0.18.1) 源码
+- 同步 [UnblockNeteaseMusic-0.19.0](https://github.com/nondanee/UnblockNeteaseMusic/releases/tag/v0.19.0) 源码
 
 ### 功能更新
 - 缺省默认"酷我音乐"高品质音源
