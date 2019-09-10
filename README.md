@@ -6,6 +6,13 @@
 - Android：v4.3.1.567509
 - 以上就是作者使用的客户端版本，自动代理功能均正常。
 
+### 建议
+- 因插件使用的ipv4进行代理，路由器尽可能的不开启ipv6，可尝试用以下命令关闭路由器的ipv6
+```
+/etc/init.d/odhcpd disable
+/etc/init.d/odhcpd stop
+```
+
 ## v2.2.0更新说明
 ### 源码更新
 - 合并 [[Lean]](https://github.com/coolsnowwolf) 对本插件二次优化后的源码
