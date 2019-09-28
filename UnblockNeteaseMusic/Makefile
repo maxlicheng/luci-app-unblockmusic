@@ -10,9 +10,14 @@
 
 include $(TOPDIR)/rules.mk
 
+_VER_MAJ := $(shell cat "./version/.VER_MAJ")
+_VER_MIN := $(shell cat "./version/.VER_MIN")
+_VER_REV := $(shell cat "./version/.VER_REV")
+_VER_PTH := $(shell cat "./version/.VER_PTH")
+
 PKG_NAME:=UnblockNeteaseMusic
-PKG_VERSION:=0.19.2
-PKG_RELEASE:=1
+PKG_VERSION:=$(_VER_MAJ).$(_VER_MIN).$(_VER_REV)
+PKG_RELEASE:=$(_VER_PTH)
 
 PKG_LICENSE:=MIT
 

@@ -9,9 +9,14 @@
 
 include $(TOPDIR)/rules.mk
 
+_VER_MAJ := $(shell cat "./version/.VER_MAJ")
+_VER_MIN := $(shell cat "./version/.VER_MIN")
+_VER_REV := $(shell cat "./version/.VER_REV")
+_VER_PTH := $(shell cat "./version/.VER_PTH")
+
 PKG_NAME:=luci-app-unblockmusic
-PKG_VERSION:=v2.2.0
-PKG_RELEASE:=1
+PKG_VERSION:=v$(_VER_MAJ).$(_VER_MIN).$(_VER_REV)
+PKG_RELEASE:=$(_VER_PTH)
 
 PKG_LICENSE:=Apache-2.0
 
