@@ -18,16 +18,15 @@ add_rule()
 	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports 5200
 	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports 5201
 	$ipt_n -I PREROUTING -p tcp -m set --match-set music dst -j cloud_music
-	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=p2.music.126.net,interface.music.163.com,interface3.music.163.com,clientlog.music.163.com,apm.music.163.com,apm3.music.163.com,p1.music.126.net,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | awk '{print "ipset add music "$1}' > /tmp/musicip.txt
-	sh /tmp/musicip.txt
-	rm /tmp/musicip.txt
+	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=p2.music.126.net,interface.music.163.com,interface3.music.163.com,clientlog.music.163.com,apm.music.163.com,apm3.music.163.com,p1.music.126.net,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | awk '{print "ipset add music "$1}' > /tmp/musicip.sh
+	sh /tmp/musicip.sh
 }
 
 del_rule(){
 	$ipt_n -D PREROUTING -p tcp -m set --match-set music dst -j cloud_music 2>/dev/null
 	$ipt_n -F cloud_music  2>/dev/null
 	$ipt_n -X cloud_music  2>/dev/null
-	
+	ipset destroy music
 	rm -f /tmp/dnsmasq.d/dnsmasq-163.conf
 	/etc/init.d/dnsmasq restart >/dev/null 2>&1
 }
@@ -71,6 +70,7 @@ stop()
 	kill -9 $(ps | grep logcheck.sh | grep -v grep | awk '{print $1}') >/dev/null 2>&1
 	rm -f /tmp/unblockmusic.log
 	rm -f /tmp/music.log
+	rm -f /tmp/musicip.sh
 	del_rule
 }
 
