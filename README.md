@@ -1,9 +1,9 @@
 ## 前言
 - 鉴于很多小伙伴反馈自动代理不成功，这里统一说明一下，截止至**2019年9月28日**，作者使用的网易云都是可以自动代理的。
 - 以下是作者使用的各个系统的网易云音乐客户端版本，自动代理功能均正常，供大家参考。
-> **Win10：**v2.5.3（Build:197601）
-> **IOS13：**v5.8.0
-> **Android：**v4.3.1.567509
+> **Win10**：v2.5.3（Build:197601）  
+> **IOS13**：v5.8.0  
+> **Android**：v4.3.1.567509  
 
 ### 建议
 - 因插件使用的ipv4进行代理，路由器尽量不开或者少开ipv6，可尝试用以下命令关闭路由器的ipv6
@@ -72,7 +72,7 @@ opkg install luci-app-unblockmusic_v2.2.0-1_all.ipk
 ### 注1：插件运行后即可正常 下载/播放 付费歌曲及无版权音乐，若无法 下载/播放 可指定其它客户端音源进行尝试
 ### 注2：若开启“启用解锁”后，仍无法正常解锁歌曲，请按以下方法设置，因设备存在差异性，不一定所有设备都能正常生效，供参考
 ### Windows客户端
-- **说明：**经多次测试，一般开启“自动代理”后，Windows网易客户端都可以正常解锁，无需设置代理；若确实无法解锁，请尝试以下步骤进行设置
+- **说明**：经多次测试，一般开启“自动代理”后，Windows网易客户端都可以正常解锁，无需设置代理；若确实无法解锁，请尝试以下步骤进行设置
 - 1.打开网易云客户端
 - 2.进入设置，找到工具
 - 3.选择 自定义代理
@@ -90,7 +90,7 @@ opkg install luci-app-unblockmusic_v2.2.0-1_all.ipk
 - 5.打开网易云app，搜索“周杰伦”进行测试，歌曲正常并能正常播放，完成IOS端设置
 ![Image text](https://www.maxlicheng.com/wp-content/uploads/2019/08/v2.20-views2.jpg)
 #### 安装低版本客户端
-- **说明：**若插件解锁效果不稳定或者无效果，可参考本人的教程笔记，下载低版本IOS网易云客户端安装包，用爱思助手进行手动安装。
+- **说明**：若插件解锁效果不稳定或者无效果，可参考本人的教程笔记，下载低版本IOS网易云客户端安装包，用爱思助手进行手动安装。
 - 具体安装教程请移步[《IOS网易云音乐低版本客户端安装教程》](https://www.maxlicheng.com/github/590.html)
 
 ## 关于issues
@@ -112,11 +112,11 @@ Target Profile (Newifi D2) --->
 
 ## 其他 
 - 更多设备的使用方法(MacOS等)，可移步个人博客：
-> [《路由器解锁网易云灰色歌曲》](https://www.maxlicheng.com/github/232.html)
-> [《Win10系统解锁网易云音乐灰色歌曲》](https://www.maxlicheng.com/github/197.html)
-> [《IOS旧版本App下载教程》](https://www.maxlicheng.com/github/605.html)
-> [《IOS网易云音乐低版本客户端安装教程》](https://www.maxlicheng.com/github/590.html)
-> [《【视频】低版本IOS网易云音乐客户端听周杰伦歌曲效果》](https://www.bilibili.com/video/av61511828/)
+> [《路由器解锁网易云灰色歌曲》](https://www.maxlicheng.com/github/232.html)  
+> [《Win10系统解锁网易云音乐灰色歌曲》](https://www.maxlicheng.com/github/197.html)  
+> [《IOS旧版本App下载教程》](https://www.maxlicheng.com/github/605.html)  
+> [《IOS网易云音乐低版本客户端安装教程》](https://www.maxlicheng.com/github/590.html)  
+> [《【视频】低版本IOS网易云音乐客户端听周杰伦歌曲效果》](https://www.bilibili.com/video/av61511828/)  
 
 
 
