@@ -15,8 +15,8 @@ add_rule()
 {
   ipset -! -N music hash:ip
 	$ipt_n -N cloud_music
-	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports 5200
-	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports 5201
+	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports $PORT
+	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports $HPORT
 	$ipt_n -I PREROUTING -p tcp -m set --match-set music dst -j cloud_music
 
   echo 1.81.5.114,1.81.5.115,110.185.122.114,110.185.122.115,14.18.239.11,14.18.239.12,223.202.198.132,223.202.198.134 |grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add block_music  {}
