@@ -18,8 +18,9 @@ add_rule()
 	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports 5200
 	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports 5201
 	$ipt_n -I PREROUTING -p tcp -m set --match-set music dst -j cloud_music
-	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=p2.music.126.net,interface.music.163.com,interface3.music.163.com,clientlog.music.163.com,apm.music.163.com,apm3.music.163.com,p1.music.126.net,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | awk '{print "ipset add music "$1}' > /tmp/musicip.sh
-	sh /tmp/musicip.sh
+
+  echo 1.81.5.114,1.81.5.115,110.185.122.114,110.185.122.115,14.18.239.11,14.18.239.12,223.202.198.132,223.202.198.134 |grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add block_music  {}
+	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=p2.music.126.net,interface.music.163.com,interface3.music.163.com,clientlog.music.163.com,apm.music.163.com,apm3.music.163.com,p1.music.126.net,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add music  {}
 }
 
 del_rule(){
@@ -37,6 +38,9 @@ set_firewall(){
 	echo "dhcp-option=252,http://$ROUTE_IP:$PORT/proxy.pac" > /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/interface.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
+	echo "ipset=/interface3.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
+	echo "ipset=/apm.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
+	echo "ipset=/apm3.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
 	/etc/init.d/dnsmasq restart >/dev/null 2>&1
 	
 	add_rule
