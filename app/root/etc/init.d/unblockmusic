@@ -19,8 +19,7 @@ add_rule()
 	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports $HPORT
 	$ipt_n -I PREROUTING -p tcp -m set --match-set music dst -j cloud_music
 
-  echo 1.81.5.114,1.81.5.115,110.185.122.114,110.185.122.115,14.18.239.11,14.18.239.12,223.202.198.132,223.202.198.134 |grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add block_music  {}
-	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=p2.music.126.net,interface.music.163.com,interface3.music.163.com,clientlog.music.163.com,apm.music.163.com,apm3.music.163.com,p1.music.126.net,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add music  {}
+	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=music.163.com,interface.music.163.com,interface3.music.163.com,apm.music.163.com,apm3.music.163.com,clientlog.music.163.com,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add music  {}
 }
 
 del_rule(){
@@ -58,9 +57,9 @@ start()
 	[ $enable -eq "0" ] && exit 0
 	
 	if [ $TYPE = "default" ]; then
-			node /usr/share/UnblockNeteaseMusic/app.js -p $PORT:$HPORT >/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js -p $PORT:$HPORT >/tmp/unblockmusic.log 2>&1 &
 	else
-			node /usr/share/UnblockNeteaseMusic/app.js -p $PORT:$HPORT -o $TYPE >/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js -p $PORT:$HPORT -o $TYPE >/tmp/unblockmusic.log 2>&1 &
 	fi
 	
 	set_firewall
