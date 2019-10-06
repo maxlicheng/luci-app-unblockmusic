@@ -2,7 +2,3 @@
 config unblockmusic
 	option enabled '0'
 	option musicapptype 'kuwo'
-	option port '5200'
-	option hport '5201'
-	
-
