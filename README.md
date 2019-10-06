@@ -108,6 +108,7 @@ Target Profile (Newifi D2) --->
 - 感谢 [[1715173329]](https://github.com/1715173329) 对本项目的[二次优化](https://github.com/project-openwrt/luci-app-unblockmusic)；
 - 本插件已被 [[L大]](https://github.com/coolsnowwolf) 收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，并对本项目进行了多次优化，感谢 [[L大]](https://github.com/coolsnowwolf) 对本项目的认可及付出；
 - 感谢 [[rufengsuixing]](https://github.com/rufengsuixing)对本项目的[二次优化](https://github.com/rufengsuixing/luci-app-unblockmusic)。
+- 感谢 [[binsee]](https://github.com/binsee)对本项目的[二次优化](https://github.com/binsee/luci-app-unblockmusic)。
 
 
 ## 其他 
