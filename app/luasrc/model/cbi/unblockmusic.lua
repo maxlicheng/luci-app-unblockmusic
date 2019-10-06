@@ -15,7 +15,6 @@ enabled.description = translate("启用后，路由器自动分流解锁，大�
 
 speedtype = s:option(ListValue, "musicapptype", translate("音源选择"))
 speedtype:value("default", translate("默认"))
-speedtype:value("netease", translate("网易云音乐"))
 speedtype:value("qq", translate("QQ音乐"))
 speedtype:value("xiami", translate("虾米音乐"))
 speedtype:value("baidu", translate("百度音乐"))
