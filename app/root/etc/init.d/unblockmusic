@@ -16,8 +16,7 @@ add_rule()
 	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports 5200
 	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports 5201
 	$ipt_n -I PREROUTING -p tcp -m set --match-set music dst -j cloud_music
-
-	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=music.163.com,interface.music.163.com,interface3.music.163.com,apm.music.163.com,apm3.music.163.com,clientlog.music.163.com,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add music  {}
+	wget "http://httpdns.n.netease.com/httpdns/v2/d?domain=p2.music.126.net,interface.music.163.com,interface3.music.163.com,clientlog.music.163.com,apm.music.163.com,apm3.music.163.com,p1.music.126.net,clientlog3.music.163.com" -O- |grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' |sort |uniq |awk '{print "ipset add music "$1}' |sh
 }
 
 del_rule(){
