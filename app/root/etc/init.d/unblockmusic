@@ -5,8 +5,6 @@ STOP=10
 
 enable=$(uci get unblockmusic.@unblockmusic[0].enabled)
 TYPE=$(uci get unblockmusic.@unblockmusic[0].musicapptype)
-PORT=$(uci get unblockmusic.@unblockmusic[0].port)
-HPORT=$(uci get unblockmusic.@unblockmusic[0].hport)
 ROUTE_IP=$(uci get network.lan.ipaddr)
 
 ipt_n="iptables -t nat"
@@ -15,8 +13,8 @@ add_rule()
 {
   ipset -! -N music hash:ip
 	$ipt_n -N cloud_music
-	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports $PORT
-	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports $HPORT
+	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports 5200
+	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports 5201
 	$ipt_n -I PREROUTING -p tcp -m set --match-set music dst -j cloud_music
 
 	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=music.163.com,interface.music.163.com,interface3.music.163.com,apm.music.163.com,apm3.music.163.com,clientlog.music.163.com,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | xargs -i ipset -! add music  {}
@@ -34,7 +32,7 @@ del_rule(){
 set_firewall(){
 	rm -f /tmp/dnsmasq.d/dnsmasq-163.conf
 	mkdir -p /tmp/dnsmasq.d
-	echo "dhcp-option=252,http://$ROUTE_IP:$PORT/proxy.pac" > /tmp/dnsmasq.d/dnsmasq-163.conf
+	echo "dhcp-option=252,http://$ROUTE_IP:5200/proxy.pac" > /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/interface.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/interface3.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
@@ -57,9 +55,9 @@ start()
 	[ $enable -eq "0" ] && exit 0
 	
 	if [ $TYPE = "default" ]; then
-		node /usr/share/UnblockNeteaseMusic/app.js -p $PORT:$HPORT >/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js -p 5200:5201 >/tmp/unblockmusic.log 2>&1 &
 	else
-		node /usr/share/UnblockNeteaseMusic/app.js -p $PORT:$HPORT -o $TYPE >/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js -p 5200:5201 -o $TYPE >/tmp/unblockmusic.log 2>&1 &
 	fi
 	
 	set_firewall
