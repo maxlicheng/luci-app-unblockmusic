@@ -53,6 +53,7 @@ endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR)  $(1)/usr/share/$(PKG_NAME)
+	echo $(PKG_VERSION) > $(1)/usr/share/$(PKG_NAME)/VERSION
 	cp -pR $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/* $(1)/usr/share/$(PKG_NAME)
 endef
 
