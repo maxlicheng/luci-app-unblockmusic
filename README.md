@@ -12,9 +12,9 @@
 /etc/init.d/odhcpd stop
 ```
 
-## v2.2.1更新说明
+## v2.2.2更新说明
 ### 源码更新
-- 合并 [[rufengsuixing]](https://github.com/rufengsuixing) 二次优化后的代码；
+- 合并 [[binsee]](https://github.com/binsee) 二次优化后的[代码](https://github.com/binsee/luci-app-unblockmusic)；
 - 同步 [UnblockNeteaseMusic-0.19.4](https://github.com/nondanee/UnblockNeteaseMusic/releases/tag/v0.19.4) 源码；
 - 完善版本管理机制。
 
