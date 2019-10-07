@@ -21,7 +21,7 @@ PKG_RELEASE:=$(_VER_PTH)
 PKG_LICENSE:=Apache-2.0
 
 LUCI_TITLE:=LuCI support for Unblock NeteaseCloudMusic
-LUCI_DEPENDS:=+UnblockNeteaseMusic +bash +dnsmasq-full +ipset
+LUCI_DEPENDS:=+UnblockNeteaseMusic +bash +dnsmasq-full +ipset +curl +wget +libopenssl
 LUCI_PKGARCH:=all
 
 PKG_MAINTAINER:=<https://github.com/maxlicheng/luci-app-unblockmusic>
