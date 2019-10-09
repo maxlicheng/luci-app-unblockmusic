@@ -14,9 +14,9 @@
 
 ## v2.2.2更新说明
 ### 源码更新
+- 简化代码，删除版本管理文件。
 - 合并 [[binsee]](https://github.com/binsee) 二次优化后的[代码](https://github.com/binsee/luci-app-unblockmusic)；
-- 同步 [UnblockNeteaseMusic-0.19.4](https://github.com/nondanee/UnblockNeteaseMusic/releases/tag/v0.19.4) 源码；
-- 完善版本管理机制。
+- 优化UnblockNeteaseMusic Makefile文件,同步 [UnblockNeteaseMusic-0.20.0](https://github.com/nondanee/UnblockNeteaseMusic/releases) 源码；
 
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LEDE路由器插件
