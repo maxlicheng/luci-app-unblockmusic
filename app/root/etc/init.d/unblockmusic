@@ -70,7 +70,7 @@ stop()
 	kill -9 $(ps | grep logcheck.sh | grep -v grep | awk '{print $1}') >/dev/null 2>&1
 	rm -f /tmp/unblockmusic.log
 	rm -f /tmp/music.log
-	rm -f /tmp/musicip.sh
+	
 	del_rule
 }
 

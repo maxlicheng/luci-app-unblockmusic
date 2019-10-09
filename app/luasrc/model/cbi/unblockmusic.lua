@@ -26,9 +26,4 @@ speedtype:value("joox", translate("JOOX音乐"))
 enabled=s:option(DummyValue,"opennewwindow" , 
 	translate("<input type=\"button\" class=\"cbi-button cbi-button-apply\" value=\"使用教程\" onclick=\"window.open('https://github.com/maxlicheng/luci-app-unblockmusic')\" />"))
 
-local apply = luci.http.formvalue("cbi.apply")
-if apply then
-	io.popen("/etc/init.d/unblockmusic restart")
-end
-
 return mp
