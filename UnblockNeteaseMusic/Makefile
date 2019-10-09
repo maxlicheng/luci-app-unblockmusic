@@ -10,21 +10,20 @@
 
 include $(TOPDIR)/rules.mk
 
-_VER_MAJ := $(shell cat "./version/.VER_MAJ")
-_VER_MIN := $(shell cat "./version/.VER_MIN")
-_VER_REV := $(shell cat "./version/.VER_REV")
-_VER_PTH := $(shell cat "./version/.VER_PTH")
-
 PKG_NAME:=UnblockNeteaseMusic
-PKG_VERSION:=$(_VER_MAJ).$(_VER_MIN).$(_VER_REV)
-PKG_RELEASE:=$(_VER_PTH)
+PKG_VERSION:=0.20.0
+PKG_RELEASE:=1
 
 PKG_LICENSE:=MIT
 
-PKG_SOURCE_URL:=https://github.com/nondanee/UnblockNeteaseMusic/archive/
-PKG_SOURCE:=v$(PKG_VERSION).tar.gz
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/nondanee/UnblockNeteaseMusic.git
+PKG_SOURCE_VERSION:=3de1af9d4c9e32de70ed8abe7bf63a6f2275bea8
+
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)
+PKG_SOURCE:=$(PKG_SOURCE_SUBDIR)-$(PKG_VERSION).tar.gz
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_SOURCE_SUBDIR)
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -54,7 +53,7 @@ endef
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR)  $(1)/usr/share/$(PKG_NAME)
 	echo $(PKG_VERSION) > $(1)/usr/share/$(PKG_NAME)/VERSION
-	cp -pR $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/* $(1)/usr/share/$(PKG_NAME)
+	cp -pR $(PKG_BUILD_DIR)/$(PKG_NAME)/* $(1)/usr/share/$(PKG_NAME)
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
