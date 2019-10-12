@@ -43,17 +43,20 @@ make menuconfig
 #单独编译路径较上一版本有变动，需要指定到app文件夹
 make package/luci-app-unblockmusic/app/compile V=99
 ```
-
+- **若编译过程中遇到问题可参考以下文章**
+> [《OpenWRT node源码更新》](https://www.maxlicheng.com/embedded/623.html)  
+> [《关于官方OpenWRT源码不支持luci-app-unblockmusic插件的解决方法》](https://www.maxlicheng.com/github/624.html)  
 ## 安装
 - 假定路由器是x86_64架构
 - 编译生成的ipk路径：bin/packages/x86_64/base/
-- 将路径下的 UnblockNeteaseMusic_0.18.0-3_x86_64.ipk 和 luci-app-unblockmusic_2.2.0-1_all.ipk 用文件传输软件拷贝到路由器
-- 若第一次安装还需将 node_v8.10.0-3_x86_64.ipk 拷贝到路由器
+- 将路径下的 UnblockNeteaseMusic_0.20.0-1_x86_64.ipk 和 luci-app-unblockmusic_v2.2.2-10_all.ipk 用文件传输软件拷贝到路由器
+- 若第一次安装还需将 libopenssl_1.0.2p-1_x86_64.ipk 及 node_v8.16.1-1_x86_64.ipk 拷贝到路由器
 - 完成后依次执行以下安装命令，注意安装顺序
 ```shell
-opkg install node_v8.10.0-3_x86_64.ipk
-opkg install UnblockNeteaseMusic_0.18.0-3_x86_64.ipk 
-opkg install luci-app-unblockmusic_v2.2.0-1_all.ipk
+opkg install libopenssl_1.0.2p-1_x86_64.ipk  
+opkg install node_v8.16.1-1_x86_64.ipk
+opkg install UnblockNeteaseMusic_0.20.0-1_x86_64.ipk
+opkg install luci-app-unblockmusic_v2.2.2-10_all.ipk
 ```
 
 ## 使用方法
