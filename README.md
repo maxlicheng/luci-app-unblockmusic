@@ -1,22 +1,12 @@
-## 前言
-- 鉴于很多小伙伴反馈自动代理不成功，这里统一说明一下，截止至**2019年9月28日**，作者使用的网易云都是可以自动代理的。
-- 以下是作者使用的各个系统的网易云音乐客户端版本，自动代理功能均正常，供大家参考。
-> **Win10**：v2.5.3（Build:197601）  
-> **IOS13**：v5.8.0  
-> **Android**：v4.3.1.567509  
-
-### 建议
-- 因插件使用的ipv4进行代理，路由器尽量不开或者少开ipv6，可尝试用以下命令关闭路由器的ipv6
-```shell
-/etc/init.d/odhcpd disable
-/etc/init.d/odhcpd stop
-```
-
-## v2.2.2更新说明
+## v2.2.3更新说明
+在L大的强力支援下，本次版本有了重大更新。
 ### 源码更新
-- 简化代码，删除版本管理文件。
-- 合并 [[binsee]](https://github.com/binsee) 二次优化后的[代码](https://github.com/binsee/luci-app-unblockmusic)；
-- 优化UnblockNeteaseMusic Makefile文件,同步 [UnblockNeteaseMusic-0.20.0](https://github.com/nondanee/UnblockNeteaseMusic/releases) 源码；
+- 全面合并 [[L大]](https://github.com/coolsnowwolf)  二次优化后的[代码](https://github.com/coolsnowwolf/lede)；
+- 同步 [UnblockNeteaseMusic-0.20.4](https://github.com/nondanee/UnblockNeteaseMusic/releases) 源码；
+- 缺省默认：QQ音乐
+### 功能更新
+- 增加一键自动更新UnblockNeteaseMusic，再也无需重复编译UnblockNeteaseMusic-ipk；
+- 支持证书安装，通过安装证书，修复iOS设备不能正常解锁的问题。设置方法(供参考)：iOS系统 “设置->通用->关于本机->证书信任设置”，信任UnblockNeteaseMusic Root CA。
 
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LEDE路由器插件
@@ -46,6 +36,7 @@ make package/luci-app-unblockmusic/app/compile V=99
 - **若编译过程中遇到问题可参考以下文章**
 > [《OpenWRT node源码更新》](https://www.maxlicheng.com/embedded/623.html)  
 > [《关于官方OpenWRT源码不支持luci-app-unblockmusic插件的解决方法》](https://www.maxlicheng.com/github/624.html)  
+
 ## 安装
 - 假定路由器是x86_64架构
 - 编译生成的ipk路径：bin/packages/x86_64/base/
@@ -64,6 +55,19 @@ opkg install luci-app-unblockmusic_v2.2.2-10_all.ipk
 - 2.勾选“启用解锁”，开启后，大部分设备无需设置代理，苹果系列设备除外
 - 3.音源缺省“酷我音乐”，支持指定音源
 - 4.点击“保存&应用”，完成插件配置
+
+## 参考
+- 以下是作者使用的各个系统的网易云音乐客户端版本，供大家参考。
+> **Win10**：v2.5.3（Build:197601）  
+> **IOS13**：v5.8.0  
+> **Android**：v4.3.1.567509  
+
+## 建议
+- 因插件使用的ipv4进行代理，路由器尽量不开或者少开ipv6，可尝试用以下命令关闭路由器的ipv6
+```shell
+/etc/init.d/odhcpd disable
+/etc/init.d/odhcpd stop
+```
 
 ## 效果图
 ### luci界面
