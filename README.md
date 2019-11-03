@@ -3,7 +3,7 @@
 ### 源码更新
 - 全面合并 [[L大]](https://github.com/coolsnowwolf)  二次优化后的[代码](https://github.com/coolsnowwolf/lede)；
 - 同步 [UnblockNeteaseMusic-0.20.4](https://github.com/nondanee/UnblockNeteaseMusic/releases) 源码；
-- 缺省默认：QQ音乐
+- 缺省:默认
 ### 功能更新
 - 增加一键自动更新UnblockNeteaseMusic，再也无需重复编译UnblockNeteaseMusic-ipk；
 - 支持证书安装，通过安装证书，修复iOS设备不能正常解锁的问题。设置方法(供参考)：iOS系统 “设置->通用->关于本机->证书信任设置”，信任UnblockNeteaseMusic Root CA。
