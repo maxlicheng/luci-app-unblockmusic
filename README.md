@@ -2,7 +2,7 @@
 在L大的强力支援下，本次版本有了重大更新。
 ### 源码更新
 - 全面合并 [[L大]](https://github.com/coolsnowwolf)  二次优化后的[代码](https://github.com/coolsnowwolf/lede)；
-- 同步 [UnblockNeteaseMusic-0.20.4](https://github.com/nondanee/UnblockNeteaseMusic/releases) 源码；
+- 同步 [UnblockNeteaseMusic-0.21.0](https://github.com/nondanee/UnblockNeteaseMusic/releases) 源码；
 - 音源缺省：默认
 ### 功能更新
 - 增加一键自动更新UnblockNeteaseMusic，再也无需重复编译UnblockNeteaseMusic-ipk；
