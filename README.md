@@ -6,7 +6,9 @@
 - 音源缺省：默认
 ### 功能更新
 - 增加一键自动更新UnblockNeteaseMusic，再也无需重复编译UnblockNeteaseMusic-ipk；
-- 支持证书安装，通过安装证书，修复iOS设备不能正常解锁的问题。设置方法(供参考)：iOS系统 “设置->通用->关于本机->证书信任设置”，信任UnblockNeteaseMusic Root CA。
+- 支持证书安装，通过安装证书，修复iOS设备不能正常解锁的问题。  
+**证书下载方法：**手机浏览器登陆路由器web界面，进入插件管理界面，点击证书下载按钮即可下载；  
+**设置方法(供参考)：**iOS系统 “设置->通用->关于本机->证书信任设置”，信任UnblockNeteaseMusic Root CA。
 
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LEDE路由器插件
