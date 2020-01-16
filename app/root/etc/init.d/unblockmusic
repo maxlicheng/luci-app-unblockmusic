@@ -41,6 +41,7 @@ del_rule(){
 	
 	rm -f /tmp/dnsmasq.d/dnsmasq-163.conf
 	/etc/init.d/dnsmasq reload >/dev/null 2>&1
+	ipset destroy music
 }
 
 set_firewall(){
