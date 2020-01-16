@@ -91,10 +91,13 @@ start()
 		endponintset="-e ${ENDPOINT}"
 	fi
 	
+	rm -f /tmp/unblockmusic.log
+	echo "$(date -R) # Start UnblockNeteaseMusic" >/tmp/unblockmusic.log
+
 	if [ $TYPE = "default" ]; then
-			node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5201:5202 >/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5201:5202 >>/tmp/unblockmusic.log 2>&1 &
 	else
-			node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5201:5202 -o $TYPE >/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5201:5202 -o $TYPE >>/tmp/unblockmusic.log 2>&1 &
 	fi
 	
 	set_firewall
