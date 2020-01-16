@@ -36,7 +36,7 @@ del_rule(){
 	$ipt_n -X cloud_music  2>/dev/null
 	
 	rm -f /tmp/dnsmasq.d/dnsmasq-163.conf
-	/etc/init.d/dnsmasq restart >/dev/null 2>&1
+	/etc/init.d/dnsmasq reload >/dev/null 2>&1
 }
 
 set_firewall(){
@@ -48,7 +48,7 @@ set_firewall(){
 	echo "ipset=/interface3.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/apm.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/apm3.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
-	/etc/init.d/dnsmasq restart >/dev/null 2>&1
+	/etc/init.d/dnsmasq reload >/dev/null 2>&1
 	
 	add_rule
 	
