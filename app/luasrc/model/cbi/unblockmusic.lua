@@ -24,7 +24,6 @@ speedtype:value("migu", translate("咕咪音乐"))
 speedtype:value("joox", translate("JOOX音乐"))
 
 endpoint = s:option(Value, "endpoint", translate("转发HTTPS音源地址"))
-endpoint.default = "https://music.163.com"
 endpoint.rmempty = true
 endpoint.description = translate("默认为 https://music.163.com")
 
