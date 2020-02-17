@@ -1,14 +1,30 @@
 ## v2.2.3更新说明
-在L大的强力支援下，本次版本有了重大更新。
-### 源码更新
-- 全面合并 [[L大]](https://github.com/coolsnowwolf)  二次优化后的[代码](https://github.com/coolsnowwolf/lede)；
-- 同步 [UnblockNeteaseMusic-0.21.0](https://github.com/nondanee/UnblockNeteaseMusic/releases) 源码；
-- 音源缺省：默认
-### 功能更新
-- 增加一键自动更新UnblockNeteaseMusic，再也无需重复编译UnblockNeteaseMusic-ipk；
-- 支持证书安装，通过安装证书，修复iOS设备不能正常解锁的问题。  
-证书下载方法：手机浏览器登陆路由器web界面，进入插件管理界面，点击证书下载按钮即可下载；  
-设置方法(供参考)：iOS系统 “设置->通用->关于本机->证书信任设置”，信任UnblockNeteaseMusic Root CA。
+
+同步@binsee的提交
+## 修复问题
+- 无法将`转发HTTPS音源地址`设置为空
+- 日志页面无法显示完整日志
+- 修复防火墙策略
+    之前的防火墙策略只能使非ssl连接生效，导致部分平台的客户端使用出现问题
+- 修复启动时获取域名列表存入ipset
+    之前被人移除了，服务不会立马生效，只有触发网卡连接事件时才更新
+- 更新功能中，如果本地不存在证书，则使用默认证书
+    适用于本地无证书/本地没有**UnblockNeteaseMusic**包的情况
+
+## 修改/调整
+- 脚本启动顺序重新改为99
+    原顺序为80，作为一个第三方服务不需要那么靠前的启动顺序，且如ss、koolproxy之类的服务启动顺序为99，他们启动后会修改防火墙策略，有可能导致unblockmusic的防火墙策略顺序靠后导致无法执行到（比如koolproxy）
+- 不重启`dnsmasq`服务，改为`重载`，避免影响dns解析
+
+## 优化
+- 移除多余无用的配置项
+- 增加对`KOOLPROXY`的防火墙策略
+   如果`openwrt`上启用了`KOOLPROXY`，且防火墙策略优先于unblockmusic的策略，会导致访问不走unblockmusic，此项对此进行了处理。对于未启用`KOOLPROXY`的无影响，**可忽略**
+- 简化启动**UnblockNeteaseMusic**的进程数量。
+
+## 其他
+-作者@maxlicheng未测试，若遇问题，欢迎开issues讨论；
+-再次感谢[binsee](https://github.com/binsee)
 
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LEDE路由器插件
