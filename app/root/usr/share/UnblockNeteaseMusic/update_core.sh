@@ -37,7 +37,9 @@ function update_core(){
 
 	wget-ssl --no-check-certificate -t 1 -T 10 -O  /tmp/unblockneteasemusic/core/core.tar.gz "https://github.com/nondanee/UnblockNeteaseMusic/archive/master.tar.gz"  >/dev/null 2>&1
 	tar -zxf "/tmp/unblockneteasemusic/core/core.tar.gz" -C "/tmp/unblockneteasemusic/core/" >/dev/null 2>&1
-	rm -f /tmp/unblockneteasemusic/core/UnblockNeteaseMusic-master/ca.crt /tmp/unblockneteasemusic/core/UnblockNeteaseMusic-master/server.crt /tmp/unblockneteasemusic/core/UnblockNeteaseMusic-master/server.key
+	if [ -e "/usr/share/UnblockNeteaseMusic/ca.crt" ] && [ -e "/usr/share/UnblockNeteaseMusic/server.crt" ] && [ -e "/usr/share/UnblockNeteaseMusic/server.key" ] ; then
+		rm -f /tmp/unblockneteasemusic/core/UnblockNeteaseMusic-master/ca.crt /tmp/unblockneteasemusic/core/UnblockNeteaseMusic-master/server.crt /tmp/unblockneteasemusic/core/UnblockNeteaseMusic-master/server.key
+	fi
 	cp -a /tmp/unblockneteasemusic/core/UnblockNeteaseMusic-master/* "/usr/share/UnblockNeteaseMusic/"
 	rm -rf "/tmp/unblockneteasemusic" >/dev/null 2>&1
 

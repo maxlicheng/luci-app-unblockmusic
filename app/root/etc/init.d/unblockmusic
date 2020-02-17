@@ -1,6 +1,6 @@
 #!/bin/sh /etc/rc.common
 
-START=80
+START=99
 STOP=10
 
 enable=$(uci get unblockmusic.@unblockmusic[0].enabled)
@@ -25,17 +25,24 @@ add_rule()
 	$ipt_n -A cloud_music -d 192.168.0.0/16 -j RETURN
 	$ipt_n -A cloud_music -d 224.0.0.0/4 -j RETURN
 	$ipt_n -A cloud_music -d 240.0.0.0/4 -j RETURN
-	$ipt_n -A cloud_music -p tcp -j REDIRECT --to-ports 5202
-	$ipt_n -I PREROUTING -p tcp --dport 80 -m set --match-set music dst -j cloud_music
+	$ipt_n -A cloud_music -p tcp --dport 80 -j REDIRECT --to-ports 5200
+	$ipt_n -A cloud_music -p tcp --dport 443 -j REDIRECT --to-ports 5201
+	$ipt_n -I PREROUTING -p tcp -m set --match-set music dst -j cloud_music
+	wget http://httpdns.n.netease.com/httpdns/v2/d?domain=music.163.com,interface.music.163.com,interface3.music.163.com,apm.music.163.com,apm3.music.163.com,clientlog.music.163.com,clientlog3.music.163.com -O- | grep -Eo '[0-9]+?\.[0-9]+?\.[0-9]+?\.[0-9]+?' | sort | uniq | awk '{print "ipset -! add music "$1}' | sh
+
+	kprule=$(iptables -t nat -L KOOLPROXY | grep "UnblockMusic" | sed 's/\/.*//')
+	[ ! -n "$kprule" ] && $ipt_n -I KOOLPROXY -m set --match-set music dst -j RETURN -m comment --comment "for UnblockMusic"
 }
 
 del_rule(){
-	$ipt_n -D PREROUTING -p tcp --dport 80 -m set --match-set music dst -j cloud_music 2>/dev/null
+	$ipt_n -D PREROUTING -p tcp -m set --match-set music dst -j cloud_music 2>/dev/null
+	$ipt_n -D KOOLPROXY -m set --match-set music dst -j RETURN -m comment --comment "for UnblockMusic" 2>/dev/null
 	$ipt_n -F cloud_music  2>/dev/null
 	$ipt_n -X cloud_music  2>/dev/null
 	
 	rm -f /tmp/dnsmasq.d/dnsmasq-163.conf
-	/etc/init.d/dnsmasq restart >/dev/null 2>&1
+	/etc/init.d/dnsmasq reload >/dev/null 2>&1
+	ipset destroy music
 }
 
 set_firewall(){
@@ -44,7 +51,10 @@ set_firewall(){
   echo "dhcp-option=252,http://$ROUTE_IP:5200/proxy.pac" > /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
 	echo "ipset=/interface.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
-	/etc/init.d/dnsmasq restart >/dev/null 2>&1
+	echo "ipset=/interface3.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
+	echo "ipset=/apm.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
+	echo "ipset=/apm3.music.163.com/music" >> /tmp/dnsmasq.d/dnsmasq-163.conf
+	/etc/init.d/dnsmasq reload >/dev/null 2>&1
 	
 	add_rule
 	
@@ -81,12 +91,13 @@ start()
 		endponintset="-e ${ENDPOINT}"
 	fi
 	
+	rm -f /tmp/unblockmusic.log
+	echo "$(date -R) # Start UnblockNeteaseMusic" >/tmp/unblockmusic.log
+
 	if [ $TYPE = "default" ]; then
-			node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5200:5201 >/tmp/unblockmusic.log 2>&1 &
-			node /usr/share/UnblockNeteaseMusic/app.js -p 5202 >>/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5200:5201 >>/tmp/unblockmusic.log 2>&1 &
 	else
-			node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5200:5201 -o $TYPE >/tmp/unblockmusic.log 2>&1 &
-			node /usr/share/UnblockNeteaseMusic/app.js -p 5202 -o $TYPE >>/tmp/unblockmusic.log 2>&1 &
+		node /usr/share/UnblockNeteaseMusic/app.js $endponintset -p 5200:5201 -o $TYPE >>/tmp/unblockmusic.log 2>&1 &
 	fi
 	
 	set_firewall
@@ -99,7 +110,6 @@ stop()
 {	kill -9 $(busybox ps -w | grep UnblockNeteaseMusic/app.js  | grep -v grep | awk '{print $1}') >/dev/null 2>&1
 	kill -9 $(busybox ps -w | grep logcheck.sh | grep -v grep | awk '{print $1}') >/dev/null 2>&1
 	rm -f /tmp/unblockmusic.log
-	rm -f /tmp/music.log
 	
 	del_rule
 	del_cron

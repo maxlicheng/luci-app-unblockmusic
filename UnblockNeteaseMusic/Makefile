@@ -11,14 +11,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=UnblockNeteaseMusic
-PKG_VERSION:=0.21.0
+PKG_VERSION:=0.22.3
 PKG_RELEASE:=1
 
 PKG_LICENSE:=MIT
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/nondanee/UnblockNeteaseMusic.git
-PKG_SOURCE_VERSION:=00c857d5cb9ca7a009cded7d52ebc21c875875f0
+PKG_SOURCE_VERSION:=b1b34db941553e600820b35791e7926ef462686f
 
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)
 PKG_SOURCE:=$(PKG_SOURCE_SUBDIR)-$(PKG_VERSION).tar.gz
@@ -43,8 +43,9 @@ endef
 
 define Build/Prepare
 	tar -xzvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR)
-	echo -e $(PKG_VERSION) > $(PKG_BUILD_DIR)/UnblockNeteaseMusic/core_ver
-	echo -e $(PKG_SOURCE_VERSION) > $(PKG_BUILD_DIR)/UnblockNeteaseMusic/local_ver
+	mkdir -p $(PKG_BUILD_DIR)/$(PKG_NAME)
+	echo -e $(PKG_VERSION) > $(PKG_BUILD_DIR)/$(PKG_NAME)/core_ver
+	echo -e $(PKG_SOURCE_VERSION) > $(PKG_BUILD_DIR)/$(PKG_NAME)/local_ver
 endef
 
 define Build/Configure
