@@ -1,6 +1,6 @@
 ## v2.2.3更新说明
 
-同步@binsee的提交
+**同步@binsee的提交**
 ## 修复问题
 - 无法将`转发HTTPS音源地址`设置为空
 - 日志页面无法显示完整日志
@@ -23,8 +23,8 @@
 - 简化启动**UnblockNeteaseMusic**的进程数量。
 
 ## 其他
--作者@maxlicheng未测试，若遇问题，欢迎开issues讨论；
--再次感谢[binsee](https://github.com/binsee)
+- 因工作太忙，未测试同步后的版本，若遇问题，欢迎开issues讨论； 
+- 再次感谢[binsee](https://github.com/binsee)
 
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LEDE路由器插件
@@ -134,7 +134,7 @@ Target Profile (Newifi D2) --->
 - 感谢 [[1715173329]](https://github.com/1715173329) 对本项目的[二次优化](https://github.com/project-openwrt/luci-app-unblockmusic)；
 - 本插件已被 [[L大]](https://github.com/coolsnowwolf) 收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，并对本项目进行了多次优化，感谢 [[L大]](https://github.com/coolsnowwolf) 对本项目的认可及付出；
 - 感谢 [[rufengsuixing]](https://github.com/rufengsuixing)对本项目的[二次优化](https://github.com/rufengsuixing/luci-app-unblockmusic)。
-- 感谢 [[binsee]](https://github.com/binsee)对本项目的[二次优化](https://github.com/binsee/luci-app-unblockmusic)。
+- 感谢 [[binsee]](https://github.com/binsee)对本项目的[多次优化](https://github.com/binsee/luci-app-unblockmusic)。
 
 
 ## 其他 
