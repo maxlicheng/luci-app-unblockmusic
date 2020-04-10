@@ -1,37 +1,30 @@
-## v2.2.3更新说明
+## v2.3.1 版本更新
+## 版本说明
+- 同步L大优化后的代码；
+- 支持多种方式代理，支持全系列路由器；
+- 优化golang Makefile，解决因goproxy环境变量无法访问导致编译失败的错误。
 
-**同步@binsee的提交**
-## 修复问题
-- 无法将`转发HTTPS音源地址`设置为空
-- 日志页面无法显示完整日志
-- 修复防火墙策略
-    之前的防火墙策略只能使非ssl连接生效，导致部分平台的客户端使用出现问题
-- 修复启动时获取域名列表存入ipset
-    之前被人移除了，服务不会立马生效，只有触发网卡连接事件时才更新
-- 更新功能中，如果本地不存在证书，则使用默认证书
-    适用于本地无证书/本地没有**UnblockNeteaseMusic**包的情况
+## 功能更新：
+- 增加golang版本的UnblockNeteaseMusic;
+- 增加云服务器代理选项，可自定义；
+- 更新Nodejs版本UnblockNeteaseMusic；
+- golang、nodejs、云服务器三种代理方式可自由选择。
 
-## 修改/调整
-- 脚本启动顺序重新改为99
-    原顺序为80，作为一个第三方服务不需要那么靠前的启动顺序，且如ss、koolproxy之类的服务启动顺序为99，他们启动后会修改防火墙策略，有可能导致unblockmusic的防火墙策略顺序靠后导致无法执行到（比如koolproxy）
-- 不重启`dnsmasq`服务，改为`重载`，避免影响dns解析
-
-## 优化
-- 移除多余无用的配置项
-- 增加对`KOOLPROXY`的防火墙策略
-   如果`openwrt`上启用了`KOOLPROXY`，且防火墙策略优先于unblockmusic的策略，会导致访问不走unblockmusic，此项对此进行了处理。对于未启用`KOOLPROXY`的无影响，**可忽略**
-- 简化启动**UnblockNeteaseMusic**的进程数量。
+## 功能优化
+- 优化代理逻辑；
+- 增加音源选项；
+- 优化日志显示;
+- 支持中英文切换。
 
 ## 其他
-- 因工作太忙，未测试同步后的版本，若遇问题，欢迎开issues讨论； 
-- 再次感谢[binsee](https://github.com/binsee)
+- 因每个人的网络环境及设备存在差异，插件代理成功率也会存在差异，若你使用的版本能够正常代理，请不要轻易更新。 
 
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LEDE路由器插件
 - 安装插件后可 免费 下载/播放 网易云付费歌曲 及 无版权音乐
-- 核心功能：[nondanee/UnblockNeteaseMusic](https://github.com/nondanee/UnblockNeteaseMusic.git) 
+- 核心功能：[1].[nondanee/UnblockNeteaseMusic (node.js版本)](https://github.com/nondanee/UnblockNeteaseMusic.git)  
+                                        [2].[cnsilvan/UnblockNeteaseMusic (golang版本)](https://github.com/cnsilvan/UnblockNeteaseMusic.git)
 - 编写配套的luci插件，使源项目代码更方便的在路由器上运行
-- 注：插件依赖于node.js，路由器主控芯片不支持FPU的设备不能正常运行node.js，已知斐讯K3不支持node.js
 
 ## 原理
 - 其原理是采用 [QQ/虾米/百度/酷狗/酷我/咕咪/JOOX]等音源 替换网易云变灰歌曲链接
@@ -56,24 +49,28 @@ make package/luci-app-unblockmusic/app/compile V=99
 > [《关于官方OpenWRT源码不支持luci-app-unblockmusic插件的解决方法》](https://www.maxlicheng.com/github/624.html)  
 
 ## 安装
-- 假定路由器是x86_64架构
-- 编译生成的ipk路径：bin/packages/x86_64/base/
-- 将路径下的 UnblockNeteaseMusic_0.20.0-1_x86_64.ipk 和 luci-app-unblockmusic_v2.2.2-10_all.ipk 用文件传输软件拷贝到路由器
-- 若第一次安装还需将 libopenssl_1.0.2p-1_x86_64.ipk 及 node_v8.16.1-1_x86_64.ipk 拷贝到路由器
+- 假定路由器是mipsel架构
+- 编译生成的ipk路径：bin/packages/mipsel/base/
+- 将路径下的 UnblockNeteaseMusic_0.24.1-3_all.ipk 、UnblockNeteaseMusicGo_0.1.9-1_mipsel_24kc.ipk、luci-app-unblockmusic_2.3.1-40_all.ipk、 luci-i18n-unblockmusic-zh-cn_2.3.1-41_all.ipk用文件传输软件拷贝到路由器
+- 若第一次安装还需将libopenssl1.1_1.1.1f-1_mipsel_24kc.ipk 及node_v12.16.1-1_mipsel_24kc.ipk 拷贝到路由器
 - 完成后依次执行以下安装命令，注意安装顺序
-```shell
-opkg install libopenssl_1.0.2p-1_x86_64.ipk  
-opkg install node_v8.16.1-1_x86_64.ipk
-opkg install UnblockNeteaseMusic_0.20.0-1_x86_64.ipk
-opkg install luci-app-unblockmusic_v2.2.2-10_all.ipk
+- 若无法安装，可尝试使用opkg remove命令移除旧版本
+```shell 
+opkg install libopenssl1.1_1.1.1f-1_mipsel_24kc.ipk
+opkg install node_v12.16.1-1_mipsel_24kc.ipk
+opkg install UnblockNeteaseMusic_0.24.1-3_all.ipk
+opkg install UnblockNeteaseMusicGo_0.1.9-1_mipsel_24kc.ipk
+opkg install luci-app-unblockmusic_2.3.1-40_all.ipk
+opkg install luci-i18n-unblockmusic-zh-cn_2.3.1-41_all.ipk
 ```
 
 ## 使用方法
 - 1.在路由器web界面“服务”选项中找到“解锁网易云灰色歌曲”
-- 2.勾选“启用解锁”，开启后，大部分设备无需设置代理，苹果系列设备除外
-- 3.音源缺省“QQ音乐”，支持指定音源
-- 4.点击“保存&应用”，完成插件配置
-- 5.其他待补充
+- 2.选择其中一种代理方式，如golang版UnblockNeteaseMusic
+- 3.勾选“启用解锁”，开启后，大部分设备无需设置代理，苹果系列设备除外
+- 4.音源缺省“酷我音乐”，支持指定音源
+- 5.点击“保存&应用”，完成插件配置
+- 6.其他待补充
 
 ## 参考
 - 以下是作者使用的各个系统的网易云音乐客户端版本，供大家参考。
@@ -130,11 +127,12 @@ Target Profile (Newifi D2) --->
 ```
 
 ## 鸣谢
-- 感谢 [[nondanee]](https://github.com/nondanee) 开发的解锁网易云灰色歌曲核心项目；
+- 感谢 [[nondanee]](https://github.com/nondanee) 开发的Node.js版解锁网易云灰色歌曲核心项目；
 - 感谢 [[1715173329]](https://github.com/1715173329) 对本项目的[二次优化](https://github.com/project-openwrt/luci-app-unblockmusic)；
 - 本插件已被 [[L大]](https://github.com/coolsnowwolf) 收录至 [[LEDE源码]](https://github.com/coolsnowwolf/lede)，并对本项目进行了多次优化，感谢 [[L大]](https://github.com/coolsnowwolf) 对本项目的认可及付出；
 - 感谢 [[rufengsuixing]](https://github.com/rufengsuixing)对本项目的[二次优化](https://github.com/rufengsuixing/luci-app-unblockmusic)。
 - 感谢 [[binsee]](https://github.com/binsee)对本项目的[多次优化](https://github.com/binsee/luci-app-unblockmusic)。
+- 感谢 [[cnsilvan]](https://github.com/cnsilvan) 开发的golang版解锁网易云灰色歌曲核心项目；
 
 
 ## 其他 
