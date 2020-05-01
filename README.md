@@ -22,8 +22,9 @@
 ## 说明
 - luci-app-unblockmusic是用来解锁网易云灰色歌曲的OpenWRT/LEDE路由器插件
 - 安装插件后可 免费 下载/播放 网易云付费歌曲 及 无版权音乐
-- 核心功能：[1].[nondanee/UnblockNeteaseMusic (node.js版本)](https://github.com/nondanee/UnblockNeteaseMusic.git)  
-                                        [2].[cnsilvan/UnblockNeteaseMusic (golang版本)](https://github.com/cnsilvan/UnblockNeteaseMusic.git)
+- 核心功能： 
+- [1].[nondanee/UnblockNeteaseMusic (node.js版本)](https://github.com/nondanee/UnblockNeteaseMusic.git)  
+- [2].[cnsilvan/UnblockNeteaseMusic (golang版本)](https://github.com/cnsilvan/UnblockNeteaseMusic.git)
 - 编写配套的luci插件，使源项目代码更方便的在路由器上运行
 
 ## 原理
